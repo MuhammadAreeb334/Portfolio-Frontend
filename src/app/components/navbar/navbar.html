@@ -1,1 +1,81 @@
-<p>navbar works!</p>
+<nav
+  class="sticky top-0 z-50 w-full h-16 flex items-center justify-between px-[5vw] border-b border-[rgba(200,169,110,0.15)] transition-all duration-300"
+  [class]="
+    isScrolled()
+      ? 'bg-[rgba(7,9,14,0.92)] backdrop-blur-xl'
+      : 'bg-[rgba(7,9,14,0.7)] backdrop-blur-md'
+  "
+>
+  <button
+    (click)="scrollTo('home')"
+    class="font-['Syne'] font-extrabold text-xl tracking-widest text-[#c8a96e] bg-transparent border-none cursor-pointer hover:opacity-80 transition-opacity duration-200 whitespace-nowrap"
+  >
+    Portfolio<span class="text-[#e8c98a]">.</span>
+  </button>
+
+  <ul class="hidden md:flex gap-7 list-none m-0 p-0">
+    @for (link of navLinks; track link.id) {
+      <li>
+        <button
+          (click)="scrollTo(link.id)"
+          class="relative text-[11px] tracking-[0.13em] uppercase bg-transparent border-none cursor-pointer transition-colors duration-300 pb-1"
+          [class]="
+            activeSection() === link.id ? 'text-[#c8a96e]' : 'text-[#737896] hover:text-[#c8a96e]'
+          "
+        >
+          {{ link.label }}
+        </button>
+      </li>
+    }
+  </ul>
+
+  <button
+    (click)="scrollTo('contact')"
+    class="hidden md:flex items-center text-[11px] tracking-[0.12em] uppercase px-5 py-2 border border-[#c8a96e] text-[#c8a96e] bg-transparent cursor-pointer transition-all duration-300 hover:bg-[#c8a96e] hover:text-[#07090e] whitespace-nowrap"
+  >
+    Hire Me
+  </button>
+
+  <button
+    class="md:hidden flex flex-col gap-[5px] bg-transparent border-none cursor-pointer p-1"
+    (click)="toggleMobileMenu()"
+    aria-label="Toggle menu"
+  >
+    <span
+      class="block w-6 h-[1.5px] bg-[#c8a96e] transition-all duration-300 origin-center"
+      [class]="isMobileMenuOpen() ? 'translate-y-[6.5px] rotate-45' : ''"
+    ></span>
+    <span
+      class="block w-6 h-[1.5px] bg-[#c8a96e] transition-all duration-300"
+      [class]="isMobileMenuOpen() ? 'opacity-0' : 'opacity-100'"
+    ></span>
+    <span
+      class="block w-6 h-[1.5px] bg-[#c8a96e] transition-all duration-300 origin-center"
+      [class]="isMobileMenuOpen() ? '-translate-y-[6.5px] -rotate-45' : ''"
+    ></span>
+  </button>
+</nav>
+
+@if (isMobileMenuOpen()) {
+  <div
+    class="fixed top-16 left-0 right-0 z-40 bg-[rgba(7,9,14,0.97)] backdrop-blur-xl border-b border-[rgba(200,169,110,0.15)] px-[5vw] pt-5 pb-7 flex flex-col gap-5 animate-[slideDown_0.25s_ease_forwards]"
+  >
+    @for (link of navLinks; track link.id) {
+      <button
+        (click)="scrollTo(link.id)"
+        class="text-[13px] tracking-[0.12em] uppercase bg-transparent border-none cursor-pointer text-left transition-colors duration-300"
+        [class]="
+          activeSection() === link.id ? 'text-[#c8a96e]' : 'text-[#737896] hover:text-[#c8a96e]'
+        "
+      >
+        {{ link.label }}
+      </button>
+    }
+    <button
+      (click)="scrollTo('contact')"
+      class="text-[11px] tracking-[0.12em] uppercase text-center py-3 mt-2 border border-[#c8a96e] text-[#c8a96e] bg-transparent cursor-pointer transition-all duration-300 hover:bg-[#c8a96e] hover:text-[#07090e]"
+    >
+      Hire Me
+    </button>
+  </div>
+}

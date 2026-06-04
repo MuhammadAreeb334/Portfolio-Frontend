@@ -1,1 +1,86 @@
-<p>about works!</p>
+<section id="about" class="relative px-[5vw] py-20 border-b border-[rgba(200,169,110,0.15)]">
+  <div class="reveal text-[10px] tracking-[0.2em] uppercase text-[#c8a96e] mb-3">✦ About Me</div>
+
+  <div class="reveal grid grid-cols-1 lg:grid-cols-2 gap-12 mt-8">
+    <div>
+      <h2
+        class="font-['Syne'] font-extrabold text-[clamp(26px,4vw,42px)] leading-[1.1] tracking-tight mb-5"
+      >
+        Building Scalable<br />Web Experiences
+      </h2>
+
+      <p class="text-[14px] text-[#737896] leading-[1.85] mb-4">
+        I'm a Full-Stack Developer based in Karachi, focused on building modern, scalable web
+        applications and interactive dashboards. I enjoy turning ideas into clean, functional, and
+        user-friendly digital products.
+      </p>
+      <p class="text-[14px] text-[#737896] leading-[1.85] mb-4">
+        Every project I build is focused on performance, clean architecture, and user experience. I
+        pay close attention to detail to ensure the final product is not just functional, but
+        smooth, scalable, and easy to use.
+      </p>
+      <p class="text-[14px] text-[#737896] leading-[1.85]">
+        Outside of development, I like exploring UI/UX trends, improving my design skills, and
+        learning new tools and technologies in the web ecosystem.
+      </p>
+
+      <div class="mt-7">
+        <h4 class="text-[11px] tracking-[0.15em] uppercase text-[#737896] mb-3">
+          Technical Skills
+        </h4>
+        <div class="flex flex-wrap gap-2">
+          @for (skill of skills; track skill) {
+            <span
+              class="px-3 py-[6px] border border-[rgba(200,169,110,0.15)] text-[11px] text-[#c8a96e] tracking-[0.07em] transition-all duration-300 hover:border-[rgba(200,169,110,0.28)] hover:bg-[rgba(200,169,110,0.06)] cursor-default"
+            >
+              {{ skill }}
+            </span>
+          }
+        </div>
+      </div>
+
+      <a
+        href="#"
+        class="inline-flex items-center gap-2 mt-8 px-6 py-3 border border-[#c8a96e] text-[#c8a96e] text-[11px] tracking-[0.12em] uppercase no-underline transition-all duration-300 hover:bg-[#c8a96e] hover:text-[#07090e]"
+      >
+        Download CV
+        <span>↓</span>
+      </a>
+    </div>
+
+    <div class="flex flex-col gap-4">
+      <div class="grid grid-cols-3 gap-3">
+        @for (stat of stats; track stat.label) {
+          <div class="relative bg-[#111420] border border-[rgba(200,169,110,0.15)] p-5 stat-card">
+            <div class="font-['Syne'] font-extrabold text-[36px] text-[#c8a96e] leading-none">
+              {{ stat.number }}
+            </div>
+            <div class="text-[11px] text-[#737896] tracking-[0.1em] mt-1">
+              {{ stat.label }}
+            </div>
+          </div>
+        }
+      </div>
+
+      <div class="mt-2">
+        <h4 class="text-[11px] tracking-[0.15em] uppercase text-[#737896] mb-4">Experience</h4>
+        @for (exp of experience; track exp.year) {
+          <div
+            class="exp-item flex gap-4 py-4 border-b border-[rgba(200,169,110,0.15)] last:border-b-0 last:pb-0"
+          >
+            <div
+              class="text-[11px] text-[#c8a96e] tracking-[0.08em] whitespace-nowrap pt-[2px] min-w-[120px]"
+            >
+              {{ exp.year }}
+            </div>
+            <div>
+              <h5 class="font-['Syne'] font-bold text-[14px] mb-1">{{ exp.role }}</h5>
+              <p class="text-[11px] text-[#c8a96e] mb-1">{{ exp.company }}</p>
+              <p class="text-[12px] text-[#737896] leading-[1.7]">{{ exp.desc }}</p>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,28 @@
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #c8a96e, transparent);
+}
+
+.exp-item {
+  transition: background 0.25s;
+}
+.exp-item:hover {
+  background: rgba(200, 169, 110, 0.03);
+}
