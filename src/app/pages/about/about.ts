@@ -35,7 +35,7 @@ export class About {
       year: 'Jan 2026 - Apr 2026',
       role: 'Frontend Developer Intern',
       company: 'Tesseract Innovation Inc.',
-      desc: 'Worked on building responsive UI components, improving frontend performance, and integrating APIs in modern web applications using React and TailwindCSS.',
+      desc: 'Worked on building responsive UI components, improving frontend performance, and integrating APIs in modern web applications using React and NEXT.',
     },
     {
       year: '2025 - Present',

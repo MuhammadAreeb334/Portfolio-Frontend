@@ -1,13 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { About } from '../about/about';
-import { Services } from '../services/services';
-import { Portfolio } from '../portfolio/portfolio';
-import { Contact } from '../contact/contact';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [About, Services, Portfolio, Contact],
+  imports: [],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })

@@ -2,31 +2,10 @@
   id="home"
   class="relative min-h-[calc(100vh-64px)] flex flex-col items-center justify-center text-center px-[5vw] py-10 overflow-hidden border-b border-[rgba(200,169,110,0.15)]"
 >
-  <div class="orb-1"></div>
-  <div class="orb-2"></div>
-  <div class="orb-3"></div>
   <div class="corner-tl"></div>
   <div class="corner-tr"></div>
   <div class="corner-bl"></div>
   <div class="corner-br"></div>
-  <div class="scan-beam"></div>
-
-  <div class="particles">
-    @for (p of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]; track p) {
-      <div
-        class="particle"
-        [style]="
-          'left:' +
-          p * 7.5 +
-          '%;animation-delay:' +
-          p * 0.6 +
-          's;animation-duration:' +
-          (6 + p) +
-          's'
-        "
-      ></div>
-    }
-  </div>
 
   <div
     class="animate-fadeUp opacity-0 [animation-delay:0.2s] [animation-fill-mode:forwards] inline-flex items-center gap-2 px-4 py-[5px] border border-[rgba(200,169,110,0.28)] rounded-full text-[11px] tracking-[0.14em] uppercase text-[#c8a96e] mb-7"
@@ -92,8 +71,3 @@
     <div class="scroll-line"></div>
   </div> -->
 </section>
-
-<app-about />
-<app-services />
-<app-portfolio />
-<app-contact />
