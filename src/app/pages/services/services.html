@@ -1,1 +1,105 @@
-<p>services works!</p>
+<section
+  id="services"
+  class="relative px-[5vw] py-10 border-b border-[rgba(200,169,110,0.15)] z-[1]"
+>
+  <div class="svc-reveal text-[10px] tracking-[0.2em] uppercase text-[#c8a96e] mb-3">
+    ✦ What I Do
+  </div>
+
+  <div class="svc-reveal flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
+    <h2
+      class="font-['Syne'] font-extrabold text-[clamp(26px,4vw,42px)] leading-[1.1] tracking-tight"
+    >
+      Services &<br />Expertise
+    </h2>
+    <p class="text-[13px] text-[#737896] max-w-[340px] leading-[1.8]">
+      Building modern web applications with clean user interfaces, scalable backend systems, and
+      seamless user experiences.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+    @for (svc of services; track svc.title; let i = $index) {
+      <div
+        class="svc-reveal svc-card relative bg-[#111420] border border-[rgba(200,169,110,0.15)] p-7 z-[1] transition-all duration-300 cursor-default hover:border-[rgba(200,169,110,0.35)] hover:bg-[#181c2a] hover:-translate-y-[3px]"
+        (mouseenter)="setHovered(i)"
+        (mouseleave)="setHovered(null)"
+      >
+        <div class="svc-top-line"></div>
+
+        <div class="text-[11px] text-[rgba(200,169,110,0.25)] tracking-[0.1em] font-['Syne'] mb-4">
+          {{ svc.num }}
+        </div>
+
+        <div class="relative w-11 h-11 mb-5">
+          <div
+            class="w-11 h-11 border border-[rgba(200,169,110,0.15)] flex items-center justify-center text-[18px] transition-all duration-300 relative z-[1]"
+            [class]="
+              hoveredCard === i ? 'border-[rgba(200,169,110,0.5)] bg-[rgba(200,169,110,0.06)]' : ''
+            "
+          >
+            {{ svc.icon }}
+          </div>
+          <div
+            class="absolute inset-0 border border-[rgba(200,169,110,0.3)] transition-all duration-500"
+            [class]="hoveredCard === i ? 'scale-[1.4] opacity-0' : 'scale-100 opacity-0'"
+          ></div>
+        </div>
+
+        <h3
+          class="font-['Syne'] font-bold text-[16px] mb-3 text-[#edeae4] transition-colors duration-300"
+          [class]="hoveredCard === i ? 'text-[#c8a96e]' : ''"
+        >
+          {{ svc.title }}
+        </h3>
+
+        <p class="text-[12px] text-[#737896] leading-[1.85] mb-5">
+          {{ svc.desc }}
+        </p>
+
+        <div
+          class="w-full h-px bg-[rgba(200,169,110,0.08)] mb-5 transition-all duration-300"
+          [class]="hoveredCard === i ? 'bg-[rgba(200,169,110,0.2)]' : ''"
+        ></div>
+
+        <ul class="flex flex-col gap-2">
+          @for (item of svc.items; track item; let j = $index) {
+            <li
+              class="flex items-center gap-[10px] text-[11px] text-[#737896] transition-all duration-300"
+              [style]="
+                hoveredCard === i
+                  ? 'transform: translateX(4px); transition-delay:' + j * 0.05 + 's'
+                  : ''
+              "
+            >
+              <span
+                class="w-1 h-1 rounded-full bg-[#c8a96e] flex-shrink-0 transition-all duration-300"
+                [class]="hoveredCard === i ? 'scale-150' : ''"
+              >
+              </span>
+              {{ item }}
+            </li>
+          }
+        </ul>
+      </div>
+    }
+  </div>
+
+  <div
+    class="svc-reveal cta-bar mt-14 flex flex-col sm:flex-row items-center justify-between gap-6 p-7 border border-[rgba(200,169,110,0.15)] bg-[#111420] relative overflow-hidden"
+  >
+    <div class="cta-glow"></div>
+    <div class="relative z-[1]">
+      <h4 class="font-['Syne'] font-bold text-[18px] mb-1">Have a project in mind?</h4>
+      <p class="text-[13px] text-[#737896]">
+        Let's discuss how I can help bring your vision to life.
+      </p>
+    </div>
+    <button
+      onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })"
+      class="relative z-[1] flex-shrink-0 px-8 py-3 bg-[#c8a96e] text-[#07090e] text-[12px] tracking-[0.12em] uppercase font-medium border-none cursor-pointer transition-all duration-300 hover:bg-[#e8c98a] hover:-translate-y-[2px] whitespace-nowrap"
+    >
+      Start a Project →
+    </button>
+  </div>
+</section>

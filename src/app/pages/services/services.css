@@ -1,0 +1,62 @@
+.svc-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.svc-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.svc-card:nth-child(1) { transition-delay: 0.05s; }
+.svc-card:nth-child(2) { transition-delay: 0.15s; }
+.svc-card:nth-child(3) { transition-delay: 0.25s; }
+.svc-card:nth-child(4) { transition-delay: 0.35s; }
+.svc-card:nth-child(5) { transition-delay: 0.45s; }
+.svc-card:nth-child(6) { transition-delay: 0.55s; }
+
+.svc-top-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, #c8a96e, transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.svc-card:hover .svc-top-line {
+  transform: scaleX(1);
+}
+
+.svc-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 0;
+  background: linear-gradient(to bottom, #c8a96e, transparent);
+  transition: height 0.4s ease;
+}
+.svc-card:hover::before {
+  height: 100%;
+}
+
+.cta-glow {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200,169,110,0.06) 0%, transparent 70%);
+  pointer-events: none;
+  animation: ctaPulse 4s ease-in-out infinite;
+}
+
+@keyframes ctaPulse {
+  0%, 100% { transform: scale(1);   opacity: 1; }
+  50%       { transform: scale(1.2); opacity: 0.6; }
+}
