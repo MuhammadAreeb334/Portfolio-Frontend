@@ -1,0 +1,26 @@
+/* Footer link hover line animation */
+.footer-link .w-0 {
+  display: inline-block;
+}
+
+/* Subtle top glow */
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(200, 169, 110, 0.4),
+    transparent
+  );
+}
+
+/* Scroll top button pulse on hover */
+.scroll-top-btn:hover {
+  box-shadow: 0 0 12px rgba(200, 169, 110, 0.15);
+}

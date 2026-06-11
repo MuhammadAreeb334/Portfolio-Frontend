@@ -1,1 +1,219 @@
-<p>contact works!</p>
+<section id="contact" class="relative px-[5vw] py-10 z-[1]">
+  <div class="contact-reveal text-[10px] tracking-[0.2em] uppercase text-[#c8a96e] mb-3">
+    ✦ Get in Touch
+  </div>
+
+  <div class="contact-reveal flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
+    <h2
+      class="font-['Syne'] font-extrabold text-[clamp(26px,4vw,42px)] leading-[1.1] tracking-tight"
+    >
+      Let's Build<br />Something<br />
+      <span class="text-[#c8a96e]">Great Together</span>
+    </h2>
+    <p class="text-[13px] text-[#737896] max-w-[340px] leading-[1.8]">
+      Have a project in mind? I'm always open to exciting opportunities, collaborations, and
+      interesting conversations.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+    <!-- Left: Info -->
+    <div class="contact-reveal flex flex-col gap-8">
+      <!-- Contact Info Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        @for (info of contactInfo; track info.label) {
+          <div
+            class="contact-info-card flex items-center gap-4 p-4 border border-[rgba(200,169,110,0.15)] bg-[#111420] transition-all duration-300 hover:border-[rgba(200,169,110,0.35)]"
+          >
+            <div
+              class="w-10 h-10 border border-[rgba(200,169,110,0.2)] flex items-center justify-center flex-shrink-0 text-[#c8a96e]"
+            >
+              <lucide-icon [img]="info.icon" size="16" />
+            </div>
+            <div>
+              <div class="text-[10px] tracking-[0.12em] uppercase text-[#737896] mb-[3px]">
+                {{ info.label }}
+              </div>
+              <div class="text-[13px] text-[#edeae4]">{{ info.value }}</div>
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- Availability badge -->
+      <div class="flex items-center gap-3 p-4 border border-[rgba(200,169,110,0.15)] bg-[#111420]">
+        <div class="relative flex-shrink-0">
+          <div class="w-3 h-3 rounded-full bg-[#4ade80]"></div>
+          <div class="absolute inset-0 rounded-full bg-[#4ade80] animate-ping opacity-40"></div>
+        </div>
+        <div>
+          <div class="text-[13px] font-medium text-[#edeae4]">Currently Available</div>
+          <div class="text-[11px] text-[#737896]">Open to new projects starting immediately</div>
+        </div>
+      </div>
+
+      <!-- Social Links -->
+      <div>
+        <div class="text-[10px] tracking-[0.15em] uppercase text-[#737896] mb-3">Find me on</div>
+        <div class="flex gap-3">
+          @for (s of socials; track s.label) {
+            <a
+              [href]="s.link"
+              [title]="s.label"
+              target="_blank"
+              class="flex items-center gap-2 px-4 py-2 border border-[rgba(200,169,110,0.15)] text-[11px] font-semibold text-[#737896] no-underline tracking-[0.08em] uppercase transition-all duration-300 hover:border-[#c8a96e] hover:text-[#c8a96e] hover:-translate-y-[2px]"
+            >
+              <lucide-icon [img]="s.icon" size="14" />
+              {{ s.label }}
+            </a>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Form -->
+    <div class="contact-reveal">
+      <!-- Success message -->
+      @if (isSubmitted()) {
+        <div
+          class="success-msg flex items-center gap-4 p-5 border border-[rgba(74,222,128,0.3)] bg-[rgba(74,222,128,0.05)] mb-6"
+        >
+          <lucide-icon [img]="CheckCircle" size="24" class="text-[#4ade80] flex-shrink-0" />
+          <div>
+            <div class="text-[14px] font-semibold text-[#edeae4] mb-1">Message Sent!</div>
+            <div class="text-[12px] text-[#737896]">
+              Thank you! I'll get back to you within 24 hours.
+            </div>
+          </div>
+        </div>
+      }
+
+      <!-- Error message -->
+      @if (hasError()) {
+        <div
+          class="flex items-center gap-3 p-4 border border-[rgba(239,68,68,0.3)] bg-[rgba(239,68,68,0.05)] mb-6 text-[12px] text-[#ef4444]"
+        >
+          <lucide-icon [img]="AlertCircle" size="16" class="flex-shrink-0" />
+          Please fill in your name, email and message.
+        </div>
+      }
+
+      <!-- Form -->
+      <form (ngSubmit)="onSubmit()" class="flex flex-col gap-4">
+        <!-- Name row -->
+        <div class="grid grid-cols-2 gap-3">
+          <div class="flex flex-col gap-[6px]">
+            <label class="text-[10px] tracking-[0.16em] uppercase text-[#737896]">
+              First Name <span class="text-[#c8a96e]">*</span>
+            </label>
+            <input
+              type="text"
+              [(ngModel)]="form.firstName"
+              name="firstName"
+              placeholder="Ahmed"
+              class="form-input bg-[#111420] border border-[rgba(200,169,110,0.15)] px-4 py-[10px] text-[13px] text-[#edeae4] outline-none transition-colors duration-300 focus:border-[#c8a96e] placeholder:text-[#737896]"
+            />
+          </div>
+          <div class="flex flex-col gap-[6px]">
+            <label class="text-[10px] tracking-[0.16em] uppercase text-[#737896]">Last Name</label>
+            <input
+              type="text"
+              [(ngModel)]="form.lastName"
+              name="lastName"
+              placeholder="Khan"
+              class="form-input bg-[#111420] border border-[rgba(200,169,110,0.15)] px-4 py-[10px] text-[13px] text-[#edeae4] outline-none transition-colors duration-300 focus:border-[#c8a96e] placeholder:text-[#737896]"
+            />
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="flex flex-col gap-[6px]">
+          <label class="text-[10px] tracking-[0.16em] uppercase text-[#737896]">
+            Email Address <span class="text-[#c8a96e]">*</span>
+          </label>
+          <div class="relative">
+            <input
+              type="email"
+              [(ngModel)]="form.email"
+              name="email"
+              placeholder="ahmed@example.com"
+              class="form-input w-full bg-[#111420] border border-[rgba(200,169,110,0.15)] pl-10 pr-4 py-[10px] text-[13px] text-[#edeae4] outline-none transition-colors duration-300 focus:border-[#c8a96e] placeholder:text-[#737896]"
+            />
+            <lucide-icon
+              [img]="Mail"
+              size="14"
+              class="absolute left-3 top-1/2 -translate-y-1/2 text-[#737896]"
+            />
+          </div>
+        </div>
+
+        <!-- Phone -->
+        <div class="flex flex-col gap-[6px]">
+          <label class="text-[10px] tracking-[0.16em] uppercase text-[#737896]"
+            >Phone (optional)</label
+          >
+          <input
+            type="tel"
+            [(ngModel)]="form.phone"
+            name="phone"
+            placeholder="+92 300 000 0000"
+            class="form-input bg-[#111420] border border-[rgba(200,169,110,0.15)] px-4 py-[10px] text-[13px] text-[#edeae4] outline-none transition-colors duration-300 focus:border-[#c8a96e] placeholder:text-[#737896]"
+          />
+        </div>
+
+        <!-- Service -->
+        <div class="flex flex-col gap-[6px]">
+          <label class="text-[10px] tracking-[0.16em] uppercase text-[#737896]">Service</label>
+          <select
+            [(ngModel)]="form.service"
+            name="service"
+            class="form-input bg-[#111420] border border-[rgba(200,169,110,0.15)] px-4 py-[10px] text-[13px] outline-none transition-colors duration-300 focus:border-[#c8a96e] appearance-none cursor-pointer"
+            [class]="form.service ? 'text-[#edeae4]' : 'text-[#737896]'"
+          >
+            <option value="" disabled>Select a service...</option>
+            @for (s of services; track s) {
+              <option [value]="s" class="bg-[#111420] text-[#edeae4]">{{ s }}</option>
+            }
+          </select>
+        </div>
+
+        <!-- Message -->
+        <div class="flex flex-col gap-[6px]">
+          <label class="text-[10px] tracking-[0.16em] uppercase text-[#737896]">
+            Message <span class="text-[#c8a96e]">*</span>
+          </label>
+          <textarea
+            [(ngModel)]="form.message"
+            name="message"
+            rows="5"
+            placeholder="Tell me about your project, timeline, and goals..."
+            class="form-input bg-[#111420] border border-[rgba(200,169,110,0.15)] px-4 py-[10px] text-[13px] text-[#edeae4] outline-none transition-colors duration-300 focus:border-[#c8a96e] placeholder:text-[#737896] resize-none"
+          ></textarea>
+          <div class="text-[10px] text-[#737896] text-right">{{ form.message.length }} / 500</div>
+        </div>
+
+        <!-- Submit -->
+        <button
+          type="submit"
+          class="submit-btn relative flex items-center justify-center gap-2 py-[13px] text-[12px] tracking-[0.14em] uppercase font-medium border-none cursor-pointer transition-all duration-300 overflow-hidden"
+          [class]="
+            isSubmitting()
+              ? 'bg-[#9a7a4e] text-[#07090e] cursor-not-allowed'
+              : 'bg-[#c8a96e] text-[#07090e] hover:bg-[#e8c98a]'
+          "
+          [disabled]="isSubmitting()"
+        >
+          @if (isSubmitting()) {
+            <span class="loading-dot"></span>
+            <span class="loading-dot [animation-delay:0.2s]"></span>
+            <span class="loading-dot [animation-delay:0.4s]"></span>
+            Sending...
+          } @else {
+            <lucide-icon [img]="Send" size="14" />
+            Send Message
+          }
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

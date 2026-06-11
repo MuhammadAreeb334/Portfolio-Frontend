@@ -1,0 +1,83 @@
+.contact-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.contact-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.contact-reveal:nth-child(2) { transition-delay: 0.1s; }
+.contact-reveal:nth-child(3) { transition-delay: 0.25s; }
+
+.contact-info-card {
+  position: relative;
+  overflow: hidden;
+}
+.contact-info-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 0;
+  background: linear-gradient(to bottom, #c8a96e, transparent);
+  transition: height 0.3s ease;
+}
+.contact-info-card:hover::before {
+  height: 100%;
+}
+
+.form-input:focus {
+  box-shadow: 0 0 0 1px rgba(200, 169, 110, 0.15);
+}
+
+.map-grid {
+  background-image:
+    linear-gradient(rgba(200, 169, 110, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200, 169, 110, 0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.loading-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #07090e;
+  animation: dotBounce 0.8s ease-in-out infinite;
+}
+
+.submit-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+.submit-btn:not(:disabled):hover::after {
+  left: 150%;
+}
+
+.success-msg {
+  animation: slideInDown 0.4s ease forwards;
+}
+
+@keyframes dotBounce {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50%       { transform: translateY(-4px); opacity: 1; }
+}
+
+@keyframes slideInDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

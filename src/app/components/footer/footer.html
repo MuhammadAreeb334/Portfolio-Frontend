@@ -1,1 +1,129 @@
-<p>footer works!</p>
+<footer class="relative border-t border-[rgba(200,169,110,0.15)] z-[1]">
+  <div class="px-[5vw] pt-16 pb-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+    <div class="lg:col-span-1 flex flex-col gap-5">
+      <button
+        (click)="scrollToTop()"
+        class="font-['Syne'] font-extrabold text-[22px] tracking-widest text-[#c8a96e] bg-transparent border-none cursor-pointer text-left hover:opacity-80 transition-opacity duration-200 w-fit"
+      >
+        Portfolio<span class="text-[#e8c98a]">.</span>
+      </button>
+      <p class="text-[13px] text-[#737896] leading-[1.8] max-w-[240px]">
+        Full-Stack Developer building scalable web applications, dashboards, and modern digital
+        products with clean architecture.
+      </p>
+      <div class="flex items-center gap-2">
+        <div class="relative">
+          <div class="w-2 h-2 rounded-full bg-[#4ade80]"></div>
+          <div class="absolute inset-0 rounded-full bg-[#4ade80] animate-ping opacity-40"></div>
+        </div>
+        <span class="text-[11px] text-[#737896] tracking-[0.06em]">Available for new projects</span>
+      </div>
+      <div class="flex gap-3 mt-1">
+        @for (s of socials; track s.label) {
+          <a
+            [href]="s.link"
+            [title]="s.label"
+            target="_blank"
+            class="w-9 h-9 border border-[rgba(200,169,110,0.15)] flex items-center justify-center text-[#737896] no-underline transition-all duration-300 hover:border-[#c8a96e] hover:text-[#c8a96e] hover:-translate-y-[2px]"
+          >
+            <lucide-icon [img]="s.icon" size="14" />
+          </a>
+        }
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-4">
+      <h4 class="font-['Syne'] font-bold text-[12px] tracking-[0.15em] uppercase text-[#edeae4]">
+        Quick Links
+      </h4>
+      <ul class="flex flex-col gap-3 list-none p-0 m-0">
+        @for (link of navLinks; track link.id) {
+          <li>
+            <button
+              (click)="scrollTo(link.id)"
+              class="footer-link text-[13px] text-[#737896] bg-transparent border-none cursor-pointer p-0 transition-all duration-300 hover:text-[#c8a96e] flex items-center gap-2 group"
+            >
+              <span
+                class="w-0 h-px bg-[#c8a96e] transition-all duration-300 group-hover:w-3"
+              ></span>
+              {{ link.label }}
+            </button>
+          </li>
+        }
+      </ul>
+    </div>
+
+    <div class="flex flex-col gap-4">
+      <h4 class="font-['Syne'] font-bold text-[12px] tracking-[0.15em] uppercase text-[#edeae4]">
+        Services
+      </h4>
+      <ul class="flex flex-col gap-3 list-none p-0 m-0">
+        @for (svc of services; track svc) {
+          <li
+            class="text-[13px] text-[#737896] flex items-center gap-2 group cursor-default transition-colors duration-300 hover:text-[#c8a96e]"
+          >
+            <span
+              class="w-1 h-1 rounded-full bg-[#c8a96e] opacity-50 flex-shrink-0 group-hover:opacity-100 transition-opacity duration-300"
+            ></span>
+            {{ svc }}
+          </li>
+        }
+      </ul>
+    </div>
+
+    <div class="flex flex-col gap-4">
+      <h4 class="font-['Syne'] font-bold text-[12px] tracking-[0.15em] uppercase text-[#edeae4]">
+        Contact
+      </h4>
+      <div class="flex flex-col gap-4">
+        <a
+          href="mailto:muhammadareeb334@gmail.com"
+          class="flex items-center gap-3 text-[13px] text-[#737896] no-underline transition-colors duration-300 hover:text-[#c8a96e] group"
+        >
+          <div
+            class="w-8 h-8 border border-[rgba(200,169,110,0.15)] flex items-center justify-center flex-shrink-0 transition-colors duration-300 group-hover:border-[#c8a96e]"
+          >
+            <lucide-icon [img]="Mail" size="13" />
+          </div>
+          muhammadareeb334@gmail.com
+        </a>
+        <div class="flex items-start gap-3 text-[13px] text-[#737896]">
+          <div
+            class="w-8 h-8 border border-[rgba(200,169,110,0.15)] flex items-center justify-center flex-shrink-0"
+          >
+            <lucide-icon [img]="Heart" size="13" class="text-[#c8a96e]" />
+          </div>
+          <span>Crafted with passion<br />in Karachi, Pakistan</span>
+        </div>
+      </div>
+
+      <button
+        (click)="scrollTo('contact')"
+        class="mt-2 px-5 py-[10px] border border-[#c8a96e] text-[#c8a96e] text-[11px] tracking-[0.12em] uppercase bg-transparent cursor-pointer transition-all duration-300 hover:bg-[#c8a96e] hover:text-[#07090e] w-fit"
+      >
+        Hire Me →
+      </button>
+    </div>
+  </div>
+
+  <div class="px-[5vw]">
+    <div class="w-full h-px bg-[rgba(200,169,110,0.1)]"></div>
+  </div>
+
+  <div class="px-[5vw] py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <p class="text-[11px] text-[#737896] tracking-[0.06em] text-center sm:text-left">
+      © {{ currentYear }} Muhammad Areeb. All rights reserved.
+    </p>
+
+    <p class="text-[11px] text-[#737896] tracking-[0.06em] text-center">
+      Built with Angular & Tailwind CSS
+    </p>
+
+    <button
+      (click)="scrollToTop()"
+      class="scroll-top-btn w-9 h-9 border border-[rgba(200,169,110,0.15)] flex items-center justify-center text-[#737896] bg-transparent cursor-pointer transition-all duration-300 hover:border-[#c8a96e] hover:text-[#c8a96e] hover:-translate-y-[2px]"
+    >
+      <lucide-icon [img]="ArrowUp" size="14" />
+    </button>
+  </div>
+</footer>
