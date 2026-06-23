@@ -35,8 +35,8 @@ export class Footer {
   ];
 
   socials = [
-    { icon: Github, label: 'GitHub', link: 'https://github.com' },
-    { icon: Linkedin, label: 'LinkedIn', link: 'https://linkedin.com' },
+    { icon: Github, label: 'GitHub', link: 'https://github.com/MuhammadAreeb334' },
+    { icon: Linkedin, label: 'LinkedIn', link: 'https://www.linkedin.com/in/muhammad-areeb-334aaac' },
     { icon: Mail, label: 'Email', link: 'mailto:muhammadareeb334@gmail.com' },
   ];
 

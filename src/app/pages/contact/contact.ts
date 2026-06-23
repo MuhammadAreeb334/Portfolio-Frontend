@@ -52,8 +52,8 @@ export class Contact implements OnInit {
   ];
 
   socials = [
-    { icon: Github, label: 'GitHub', link: 'https://github.com' },
-    { icon: Linkedin, label: 'LinkedIn', link: 'https://linkedin.com' },
+    { icon: Github, label: 'GitHub', link: 'https://github.com/MuhammadAreeb334' },
+    { icon: Linkedin, label: 'LinkedIn', link: 'https://www.linkedin.com/in/muhammad-areeb-334aaac' },
   ];
 
   services = [
