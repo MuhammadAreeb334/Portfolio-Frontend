@@ -8,8 +8,7 @@ import { Component, signal, computed, AfterViewInit } from '@angular/core';
   styleUrl: './portfolio.css',
 })
 export class Portfolio implements AfterViewInit {
-
-  filterTabs = ['All', 'Frontend', 'Full Stack', 'Backend', 'Dashboard'];
+  filterTabs = ['All', 'Frontend', 'Full Stack', 'Dashboard']; //, 'Backend'
 
   activeFilter = signal('All');
 
@@ -19,66 +18,69 @@ export class Portfolio implements AfterViewInit {
 
   projects = [
     {
-      title: 'Nexus Dashboard',
-      cat: 'Dashboard',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80',
-      desc: 'Enterprise analytics platform with real-time data visualization and role-based access control for 200k+ users.',
-      tags: ['Angular', 'D3.js', 'Node.js'],
-      filter: 'Dashboard',
-      link: '#'
-    },
-    {
-      title: 'ShopFlow E-Commerce',
+      title: 'Shopper E-Commerce',
       cat: 'Full Stack',
-      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80',
-      desc: 'Full-stack e-commerce platform with Stripe payments, product management, cart system and order tracking.',
-      tags: ['React', 'Node.js', 'MongoDB'],
+      image:
+        'https://plus.unsplash.com/premium_photo-1683746792239-6ce8cdd3ac78?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8RWNvbW1lcmNlfGVufDB8fDB8fHww',
+      desc: 'Full-stack e-commerce platform featuring secure JWT authentication, Stripe payment integration, shopping cart, and an admin dashboard for product management.',
+      tags: ['React', 'Node.js', 'MongoDB', 'Express'],
       filter: 'Full Stack',
-      link: '#'
+      link: 'https://shopper-clothings.vercel.app',
     },
     {
-      title: 'DevConnect API',
-      cat: 'Backend',
-      image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80',
-      desc: 'RESTful API with JWT authentication, role-based permissions, rate limiting and full documentation.',
-      tags: ['Node.js', 'Express', 'PostgreSQL'],
-      filter: 'Backend',
-      link: '#'
+      title: 'DashMate',
+      cat: 'Dashboard',
+      image:
+        'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZGFzaGJvYXJkfGVufDB8fDB8fHww',
+      desc: 'Modern admin dashboard with interactive charts, analytics, responsive layouts, and a clean user interface for efficient data management.',
+      tags: ['React', 'Tailwand', 'JavaScript'],
+      filter: 'Dashboard',
+      link: 'https://dash-mate-nu.vercel.app',
     },
+    // {
+    //   title: 'DevConnect API',
+    //   cat: 'Backend',
+    //   image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80',
+    //   desc: 'RESTful API with JWT authentication, role-based permissions, rate limiting and full documentation.',
+    //   tags: ['Node.js', 'Express', 'PostgreSQL'],
+    //   filter: 'Backend',
+    //   link: '#'
+    // },
     {
-      title: 'Portfolio Builder',
+      title: 'FS Insurance Agency',
       cat: 'Frontend',
-      image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&q=80',
-      desc: 'Drag-and-drop portfolio builder with live preview, custom themes, and one-click deployment.',
-      tags: ['Angular', 'TailwindCSS', 'TypeScript'],
+      image:
+        'https://plus.unsplash.com/premium_photo-1661763036649-2c4c70e8a97b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDl8fGluc3VyYW5jZSUyMGFnZW50fGVufDB8fDB8fHww',
+      desc: 'Modern and responsive insurance agency website featuring smooth animations, service pages, quote request forms, and an intuitive user experience.',
+      tags: ['React', 'TailwindCSS', 'JavaScript'],
       filter: 'Frontend',
-      link: '#'
+      link: 'https://fsinsurance.vercel.app',
     },
     {
-      title: 'TaskFlow SaaS',
-      cat: 'Full Stack',
-      image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&q=80',
-      desc: 'B2B project management SaaS with Kanban boards, time tracking, invoicing and team collaboration.',
-      tags: ['React', 'NestJS', 'PostgreSQL'],
-      filter: 'Full Stack',
-      link: '#'
-    },
-    {
-      title: 'Analytics Pro',
+      title: 'PAC Trading Automation',
       cat: 'Dashboard',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80',
-      desc: 'Business intelligence dashboard with interactive charts, custom reports and real-time data streaming.',
-      tags: ['Angular', 'Chart.js', 'WebSocket'],
+      image:
+        'https://images.unsplash.com/photo-1686061594225-3e92c0cd51b0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fERhc2hib2FyZHxlbnwwfHwwfHx8MA%3D%3D',
+      desc: 'Developed a responsive trading dashboard with analytics, performance monitoring, interactive charts, and streamlined workflow management.',
+      tags: ['React', 'Tailwand', 'JavaScript'],
       filter: 'Dashboard',
-      link: '#'
+      link: 'https://pac-trading-automation-pink.vercel.app',
+    },
+    {
+      title: 'LPMM Terminal',
+      cat: 'Dashboard',
+      image:
+        'https://images.unsplash.com/photo-1689732888407-310424e3a372?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dHJhZGluZ3xlbnwwfHwwfHx8MA%3D%3D',
+      desc: 'Built a modern trading terminal featuring live market updates, performance analytics, responsive design, and an intuitive user interface.',
+      tags: ['React', 'Tailwand', 'WebSocket'],
+      filter: 'Dashboard',
+      link: 'https://lpmm-terminal.netlify.app',
     },
   ];
 
   filteredProjects = computed(() => {
     const f = this.activeFilter();
-    return f === 'All'
-      ? this.projects
-      : this.projects.filter(p => p.filter === f);
+    return f === 'All' ? this.projects : this.projects.filter((p) => p.filter === f);
   });
 
   setFilter(tab: string) {
@@ -99,13 +101,13 @@ export class Portfolio implements AfterViewInit {
   initObserver() {
     this.observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach(entry => {
+        entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     this.observeCards();
@@ -116,6 +118,6 @@ export class Portfolio implements AfterViewInit {
 
     const elements = document.querySelectorAll('.port-reveal');
 
-    elements.forEach(el => this.observer.observe(el));
+    elements.forEach((el) => this.observer.observe(el));
   }
 }

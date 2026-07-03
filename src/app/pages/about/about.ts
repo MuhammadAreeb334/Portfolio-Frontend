@@ -32,16 +32,16 @@ export class About {
 
   experience = [
     {
+      year: '2026 - Present',
+      role: 'Freelance Full-Stack Developer',
+      company: 'Self-Employed',
+      desc: 'Developing full-stack web applications including dashboards, e-commerce platforms, and custom business solutions using MERN stack technologies.',
+    },
+    {
       year: 'Jan 2026 - Apr 2026',
       role: 'Frontend Developer Intern',
       company: 'Tesseract Innovation Inc.',
       desc: 'Worked on building responsive UI components, improving frontend performance, and integrating APIs in modern web applications using React and NEXT.',
-    },
-    {
-      year: '2025 - Present',
-      role: 'Freelance Full-Stack Developer',
-      company: 'Self-Employed',
-      desc: 'Developing full-stack web applications including dashboards, e-commerce platforms, and custom business solutions using MERN stack technologies.',
     },
     {
       year: '2024 - 2025',
