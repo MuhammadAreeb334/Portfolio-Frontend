@@ -58,6 +58,11 @@
 
 @if (isMobileMenuOpen()) {
   <div
+    class="fixed inset-0 top-16 z-30 bg-black/30 backdrop-blur-md"
+    (click)="toggleMobileMenu()"
+  ></div>
+
+  <div
     class="fixed top-16 left-0 right-0 z-40 bg-[rgba(7,9,14,0.97)] backdrop-blur-xl border-b border-[rgba(200,169,110,0.15)] px-[5vw] pt-5 pb-7 flex flex-col gap-5 animate-[slideDown_0.25s_ease_forwards]"
   >
     @for (link of navLinks; track link.id) {
@@ -71,6 +76,7 @@
         {{ link.label }}
       </button>
     }
+
     <button
       (click)="scrollTo('contact')"
       class="text-[11px] tracking-[0.12em] uppercase text-center py-3 mt-2 border border-[#c8a96e] text-[#c8a96e] bg-transparent cursor-pointer transition-all duration-300 hover:bg-[#c8a96e] hover:text-[#07090e]"

@@ -1,4 +1,4 @@
-import { Component, HostListener, signal } from '@angular/core';
+import { Component, HostListener, signal, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -7,7 +7,7 @@ import { Component, HostListener, signal } from '@angular/core';
   templateUrl: './navbar.html',
   styleUrl: './navbar.css',
 })
-export class Navbar {
+export class Navbar implements OnDestroy {
   isMobileMenuOpen = signal(false);
   isScrolled = signal(false);
   activeSection = signal('home');
@@ -40,14 +40,27 @@ export class Navbar {
   }
 
   scrollTo(id: string) {
+    this.isMobileMenuOpen.set(false);
+
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
     }
-    this.isMobileMenuOpen.set(false);
   }
 
   toggleMobileMenu() {
-    this.isMobileMenuOpen.update((v) => !v);
+    const isOpen = !this.isMobileMenuOpen();
+
+    this.isMobileMenuOpen.set(isOpen);
+
+    document.documentElement.style.overflow = isOpen ? 'hidden' : '';
+    document.body.style.overflow = isOpen ? 'hidden' : '';
   }
+  ngOnDestroy() {
+  document.documentElement.style.overflow = '';
+  document.body.style.overflow = '';
+}
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import emailjs from '@emailjs/browser';
+import { environment } from '../../../environments/environment';
 import {
   LucideAngularModule,
   Mail,
@@ -53,7 +55,11 @@ export class Contact implements OnInit {
 
   socials = [
     { icon: Github, label: 'GitHub', link: 'https://github.com/MuhammadAreeb334' },
-    { icon: Linkedin, label: 'LinkedIn', link: 'https://www.linkedin.com/in/muhammad-areeb-334aaac' },
+    {
+      icon: Linkedin,
+      label: 'LinkedIn',
+      link: 'https://www.linkedin.com/in/muhammad-areeb-334aaac',
+    },
   ];
 
   services = [
@@ -89,15 +95,39 @@ export class Contact implements OnInit {
       setTimeout(() => this.hasError.set(false), 3000);
       return;
     }
+
     this.isSubmitting.set(true);
     this.hasError.set(false);
-    setTimeout(() => {
-      this.isSubmitting.set(false);
-      this.isSubmitted.set(true);
-      this.resetForm();
 
-      setTimeout(() => this.isSubmitted.set(false), 3000);
-    }, 2000);
+    const templateParams = {
+      first_name: this.form.firstName,
+      last_name: this.form.lastName,
+      email: this.form.email,
+      phone: this.form.phone || 'Not provided',
+      service: this.form.service || 'Not specified',
+      message: this.form.message,
+      to_email: 'muhammadareeb334@gmail.com',
+    };
+
+    emailjs
+      .send(
+        environment.emailjs.serviceId,
+        environment.emailjs.templateId,
+        templateParams,
+        environment.emailjs.publicKey,
+      )
+      .then(() => {
+        this.isSubmitting.set(false);
+        this.isSubmitted.set(true);
+        this.resetForm();
+        setTimeout(() => this.isSubmitted.set(false), 3000);
+      })
+      .catch((err) => {
+        console.error('EmailJS error:', err);
+        this.isSubmitting.set(false);
+        this.hasError.set(true);
+        setTimeout(() => this.hasError.set(false), 3000);
+      });
   }
 
   resetForm() {
